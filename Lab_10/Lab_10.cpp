@@ -7,12 +7,12 @@ int main()
 {
 	setlocale(LC_ALL, "ru");
 
-    int n, k, i, j, num, kol;
+	int n, k, i, j, num, kol;
 	int l;
 
-    cout << "Введите колличество элементов массива: ";
-    cin >> n;
-    cout << endl;
+	cout << "Введите колличество элементов массива: ";
+	cin >> n;
+	cout << endl;
 	int* arr = new int[n];
 
 	for (i = 0; i < n; i++) {
@@ -63,9 +63,9 @@ int main()
 
 	for (i = 0; i < n + k; i++) {
 		for (kol = i; kol < n + k; kol++) {
-			if (i == num - 1) {
+			if (i == num) {
 				for (l = i; l < k + i; l++) {
-					for (j = n + k; j > i; j--) {
+					for (j = n + k; j > l; j--) {
 						arr1[j] = arr1[j - 1];
 					}
 					cin >> arr1[l];

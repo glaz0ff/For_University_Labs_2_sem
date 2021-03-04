@@ -41,30 +41,44 @@ lab* vvod(int size)
 
 void de(lab* head, int size)
 {
-	lab* p = head;
+	lab* p, *p1, *p2;
 	int h = 0;
 
-	
-		for (int i = 0; i < size; i++)
+	p = head;				
+	p1 = head;
+	p2 = head;
+
+	for (int i = 1; i <= size; i++)
+	{
+		if ((p->data) % 2 == 0)
 		{
-
-			if ((head->data) % 2 == 0)
+			if (p->next == NULL)
 			{
-				head = head->next;
-				h++;
-				p = head;
-				p->prev->next = head->next;
-				p->next->prev = head->prev;
+
 				delete p;
+				p = p1; p2 = p1;
+				p1->next = NULL;
+				break;
 
 			}
-			else
-			{
-				head = head->next;
-			}
-
+			p2 = p->next;
+			delete p;
+			p1->next = p2;
+			p1 = p2;
+			p = p2;
 		}
-	size -= h;
+			else {
+
+				if (p2->next == NULL)
+					break;
+
+				p = p->next;
+				p2 = p->next;
+
+			}
+		
+
+	}
 	
 }
 
@@ -86,14 +100,6 @@ void print(lab* head)
 	}
 	cout << endl;
 }
-
-//void clean(lab* head) {
-//	lab* elem = head;
-//	elem = head;
-//	head = head->next;
-//	delete elem;
-//}
-
 
 int main()
 {
@@ -117,7 +123,7 @@ int main()
 	print(head);
 	cout << endl;
 
-	//clean(head);
+
 	delete head;
 	return(0);
 }
